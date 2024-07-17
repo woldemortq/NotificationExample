@@ -75,7 +75,7 @@ const App = () => {
 
   return (
     <>
-      <button onClick={handleClick} disabled={loading || pause}>
+      <button className="buttonStyle" onClick={handleClick} disabled={loading || pause}>
         {loading ? 'Отправка...' : 'Отправить'}
       </button>
       
