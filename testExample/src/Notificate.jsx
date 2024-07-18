@@ -16,10 +16,11 @@ function Notificate(props) {
                     <p id="info">{text}</p>
                     <div className="progress-bar-inner">
                         <div className="progress-bar" id="progress"></div>
+                        <Notification/>
                     </div>
                 </div>
             </div>
-            <Notification/>
+
         </div>)
         
 }

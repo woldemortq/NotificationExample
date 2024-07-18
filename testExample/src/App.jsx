@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import icon_ok from './assets/images/icon_ok.png';
 import not_ok from './assets/images/not_ok.png';
 import Notificate from "./Notificate.jsx";
+import Notification from "./progressEffect.jsx";
 
 const simulateServer = async () => {
   return new Promise((resolve, reject) => {
@@ -11,6 +12,7 @@ const simulateServer = async () => {
       } else {
         reject({ status: "Изменения не сохранены", label: not_ok, text: "Потеря интернет соединения" });
       }
+
     }, 1000);
   });
 };
@@ -73,6 +75,8 @@ const App = () => {
     }
   }, [notificationVisible, pause, remainingTime]);
 
+
+
   return (
     <>
       <button className="buttonStyle" onClick={handleClick} disabled={loading || pause}>
@@ -80,8 +84,8 @@ const App = () => {
       </button>
       
       {notificationVisible && (result || error) && (
-        <div
-          onMouseEnter={handleMouseEnter}
+          <div
+            onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <Notificate
@@ -89,11 +93,10 @@ const App = () => {
             label={result ? result.label : error.label}
             text={result ? result.text : error.text}
           />
-          <div style={{ width: '100%', backgroundColor: '#ccc', height: '5px', marginTop: '10px' }}>
-            <div style={{ width: `${(remainingTime / 3000) * 100}%`, backgroundColor: '#4caf50', height: '100%' }} />
+          <Notification/>
           </div>
-        </div>
       )}
+
     </>
   );
 };
